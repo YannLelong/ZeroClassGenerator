@@ -6,6 +6,8 @@
 
 class CodeGenWindow : public QDialog
 {
+    Q_OBJECT
+
 public:
     CodeGenWindow(QString &code, MainWindow *parent );
 

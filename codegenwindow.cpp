@@ -14,7 +14,7 @@ CodeGenWindow :: CodeGenWindow (QString &code, MainWindow *parent = 0) : QDialog
     /******
     /CLOSE/
     ******/
-    close = new QPushButton("Close");
+    close = new QPushButton(tr("Close"));
     //Close window on click
     connect(close,SIGNAL(clicked()),this,SLOT(accept()));
 
@@ -33,7 +33,7 @@ CodeGenWindow :: CodeGenWindow (QString &code, MainWindow *parent = 0) : QDialog
     /WINDOW/
     *******/
     setLayout(mainLayout);
-    setWindowTitle("ZCG : Generated Code");
+    setWindowTitle(tr("ZCG : Generated Code"));
     setWindowIcon(QIcon("icon.png"));
     resize(300,450);
 

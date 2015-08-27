@@ -10,26 +10,26 @@ MainWindow :: MainWindow() : QWidget()
     motherClass = new QLineEdit;
 
     definition = new QFormLayout;
-    definition->addRow("&Name", name);
-    definition->addRow("&Mother class", motherClass);
+    definition->addRow(tr("&Name"), name);
+    definition->addRow(tr("&Mother class"), motherClass);
 
-    definitionBox = new QGroupBox("Class definition");
+    definitionBox = new QGroupBox(tr("Class definition"));
     definitionBox->setLayout(definition);
 
     /********************
     /SECTION 2 : Options/
     ********************/
-    protectHeader = new QCheckBox("Protect the &header against multiple inclusions");
+    protectHeader = new QCheckBox(tr("Protect the &header against multiple inclusions"));
     protectHeader->setChecked(true);
-    generateConstructor = new QCheckBox("Generate a default &constructor");
-    generateDestructor = new QCheckBox("Generate a &destructor");
+    generateConstructor = new QCheckBox(tr("Generate a default &constructor"));
+    generateDestructor = new QCheckBox(tr("Generate a &destructor"));
 
     options = new QVBoxLayout;
     options->addWidget(protectHeader);
     options->addWidget(generateConstructor);
     options->addWidget(generateDestructor);
 
-    optionsBox = new QGroupBox("Options");
+    optionsBox = new QGroupBox(tr("Options"));
     optionsBox->setLayout(options);
 
     /*********************
@@ -44,11 +44,11 @@ MainWindow :: MainWindow() : QWidget()
     creation->setDate(QDate::currentDate());
 
     comments = new QFormLayout;
-    comments->addRow("&Author", author);
-    comments->addRow("Crea&tion date", creation);
-    comments->addRow("Class &role", role);
+    comments->addRow(tr("&Author"), author);
+    comments->addRow(tr("Crea&tion date"), creation);
+    comments->addRow(tr("Class &role"), role);
 
-    commentsBox = new QGroupBox("Add comments");
+    commentsBox = new QGroupBox(tr("Add comments"));
     commentsBox->setCheckable(true);
     commentsBox->setChecked(false);
     commentsBox->setLayout(comments);
@@ -57,13 +57,13 @@ MainWindow :: MainWindow() : QWidget()
     /SECTION 4 : Footer buttons/
     ***************************/
     generate = new QPushButton;
-    generate->setText("Generate");
-    generate->setToolTip("Click to generate the class skeleton");
+    generate->setText(tr("Generate"));
+    generate->setToolTip(tr("Click to generate the class skeleton"));
     //Generate the code on click
     connect(generate,SIGNAL(clicked()),this,SLOT(codeGen()));
 
     exitButton = new QPushButton;
-    exitButton->setText("Exit");
+    exitButton->setText(tr("Exit"));
     //Exit the application on click
     connect(exitButton,SIGNAL(clicked()),this,SLOT(exit()));
 
@@ -85,7 +85,7 @@ MainWindow :: MainWindow() : QWidget()
     /WINDOW/
     *******/
     setLayout(mainLayout);
-    setWindowTitle("Zero Class Generator");
+    setWindowTitle(tr("Zero Class Generator"));
     setWindowIcon(QIcon("icon.png"));
 
 }
@@ -96,7 +96,7 @@ MainWindow :: MainWindow() : QWidget()
 
 void MainWindow::codeGen()  {
     if(name->text().isEmpty()){ //no class name == no file to generate
-        QMessageBox::critical(this,"Error!","You need to at least enter a class name.");
+        QMessageBox::critical(this,tr("Error!"),tr("You need to at least enter a class name."));
         return;
     }
 
@@ -149,7 +149,7 @@ void MainWindow::codeGen()  {
 }
 
 void MainWindow::exit()    {
-    int response = QMessageBox::question(this,"Exit?","Do you really want to exit the application?",QMessageBox::Yes|QMessageBox::No);
+    int response = QMessageBox::question(this,tr("Exit?"),tr("Do you really want to exit the application?"),QMessageBox::Yes|QMessageBox::No);
     if(response == QMessageBox::Yes)
     {
         qApp->exit();
