@@ -3,7 +3,7 @@
 
 MainWindow :: MainWindow() : QWidget()
 {
-    /*****************************
+    /****************************
     /SECTION 1 : Class definition/
     *****************************/
     name = new QLineEdit;
